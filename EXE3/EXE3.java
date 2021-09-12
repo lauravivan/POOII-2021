@@ -47,7 +47,17 @@ public class EXE3 {
         } catch (NullPointerException e) {
             System.out.println("Erro: O seu baralho é inexistente pois você tentou criá-lo com"
                     + " a quantidade diferente da necessária");
-        } 
+        }
+        
+        try {
+            Carta[] minhasCartas = new Carta[2];
+            minhasCartas[0] = new Carta("espada", 5);
+            minhasCartas[1] = new Carta("ouro", 4);
+            minhasCartas[2] = new Carta("copas", 3);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Erro: você está tentando criar cartas há mais"
+                    + " do que é permitido! Tente aumentar o espaço.");
+        }
         
         try {
             Carta[] minhasCartas = new Carta[52];
