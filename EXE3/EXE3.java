@@ -18,26 +18,27 @@ public class EXE3 {
         try {
             Carta minhaCarta = new Carta(5, 5);
         } catch (RuntimeException e) {
-            System.out.println("Erro: Você está tentando passar como parâmetro um inteiro"
-                    + " no lugar de uma String");
+            System.out.println("Parece que você está tentando inserir um número"
+                    + " no lugar de uma string");
         }
         
         try {
             Carta minhaCarta = new Carta("espadas", "copas");
         } catch (RuntimeException e) {
-            System.out.println("Erro: Você está tentando passar como parâmetro uma String"
-                    + " no lugar de um inteiro");
+            System.out.println("Parece que você está tentando inserir uma string"
+                    + " no lugar de um número");
         }
         
         try {
-            Carta minhaCarta = new Carta("espadas", Integer.parseInt("copas"));
-        } catch (NumberFormatException e) {
-            System.out.println("Erro: Você está tentando transformar uma String em inteiro");
+            Carta umaCarta = new Carta("espadas", 20);
+            System.out.println(umaCarta);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
         try {
             Carta[] minhasCartas = new Carta[2];
-            minhasCartas[0] = new Carta("espada", 5);
+            minhasCartas[0] = new Carta("espadas", 5);
             minhasCartas[1] = new Carta("ouro", 10);
 
             Baralho meuBaralho = new Baralho(minhasCartas);
@@ -45,18 +46,7 @@ public class EXE3 {
                 System.out.println(meuBaralho.getCartas()[i]);
             }
         } catch (NullPointerException e) {
-            System.out.println("Erro: O seu baralho é inexistente pois você tentou criá-lo com"
-                    + " a quantidade diferente da necessária");
-        }
-        
-        try {
-            Carta[] minhasCartas = new Carta[2];
-            minhasCartas[0] = new Carta("espada", 5);
-            minhasCartas[1] = new Carta("ouro", 4);
-            minhasCartas[2] = new Carta("copas", 3);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Erro: você está tentando criar cartas há mais"
-                    + " do que é permitido! Tente aumentar o espaço.");
+            System.out.println(e.getMessage());
         }
         
         try {
@@ -112,12 +102,12 @@ public class EXE3 {
             minhasCartas[48] = new Carta("paus", 10);
             minhasCartas[49] = new Carta("paus", 11);
             minhasCartas[50] = new Carta("paus", 12);
-            minhasCartas[51] = new Carta("ovos", 40);
+            minhasCartas[51] = new Carta("ovos", 2);
             
             Baralho meuBaralho = new Baralho(minhasCartas);
-        } catch (NullPointerException e) {
-            System.out.println("Erro: Você tentou intanciar no baralho uma carta inválida");
-        }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } 
         
         try {
             Carta[] minhasCartas = new Carta[52];
@@ -176,9 +166,8 @@ public class EXE3 {
             
             Baralho meuBaralho = new Baralho(minhasCartas);
         } catch (NullPointerException e) {
-            System.out.println("Erro: Você tentou intanciar uma carta ou várias cartas"
-                    + " repetidas");
-        }
+            System.out.println(e.getMessage());
+        } 
   
         Carta[] minhasCartas = new Carta[52];
         minhasCartas[0] = new Carta("espadas", 1);
@@ -236,17 +225,32 @@ public class EXE3 {
 
         Baralho meuBaralho = new Baralho(minhasCartas);
        
-        meuBaralho.mostrarBaralho(meuBaralho);
+        System.out.println(meuBaralho);
        
-        meuBaralho.embaralhar(meuBaralho);    
-        for (int i = 0; i < meuBaralho.getCartas().length; i++) {
-            System.out.println(meuBaralho.getCartas()[i]);
-        }
+        meuBaralho.embaralhar();    
+        System.out.println(meuBaralho);
         
-        meuBaralho.ordernar(meuBaralho);
-        for (int i = 0; i < meuBaralho.getCartas().length; i++) {
-            System.out.println(meuBaralho.getCartas()[i]);
-        }  
+        meuBaralho.ordernar();
+        System.out.println(meuBaralho);
+        
+        Carta umaCarta = new Carta("copas", 10);
+        System.out.println("Minha carta: " + umaCarta);
+        
+        try {
+            Carta[] minhasCartas = new Carta[5];    
+            minhasCartas[0] = new Carta("espadas", 2);
+            minhasCartas[1] = new Carta("espadas", 4);
+            minhasCartas[2] = new Carta("espadas", 1);
+            minhasCartas[3] = new Carta("espadas", 6);
+            minhasCartas[4] = new Carta("espadas", 7);
+            
+            Baralho meuBaralho = new Baralho(minhasCartas);
+            
+            meuBaralho.embaralhar();
+            System.out.println(meuBaralho);
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
 }
