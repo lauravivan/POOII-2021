@@ -21,27 +21,15 @@ public class Baralho {
         int flag = 0;
         
         if (cartas.length != QUANTIDADE_DE_CARTAS) {
-            cartas = null;
-            flag += 1;
-        }
-        
-        for (int i = 0; i < QUANTIDADE_DE_CARTAS; i++) {
-            if ("".equals(cartas[i].getNaipe())){
-                cartas = null;
-                flag += 1;
-            }
-        }
-        
-        for (int i = 0; i < QUANTIDADE_DE_CARTAS; i++) {
-            if (cartas[i].getNumero() == 0) {
-                cartas = null;
-                flag += 1;
-            }
+            throw new NullPointerException("Erro: o seu baralho é inexistente pois você tentou criá-lo com"
+                    + " a quantidade diferente da necessária");
+        } else {
+            flag = 1;
         }
         
         this.cartasRepetidas(cartas);
 
-        if (flag == 0) {
+        if (flag == 1) {
             this.cartas = cartas;
         }
     }
@@ -54,29 +42,22 @@ public class Baralho {
         this.cartas = cartas;
     }
     
-    public void mostrarBaralho(Baralho baralho) {
-        System.out.println("\nSeu baralho: ");
-        for (int i = 0; i < QUANTIDADE_DE_CARTAS; i++) {
-           System.out.println(baralho.getCartas()[i]);
-        }
-    }
-    
-    public void ordernar(Baralho baralho) {
+    public void ordernar() {
         Carta aux;
         
         System.out.println("\nSeu baralho ordenado: ");
         for (int i = 0; i < QUANTIDADE_DE_CARTAS; i++) {
             for (int j = 0; j < QUANTIDADE_DE_CARTAS; j++) {
-                if (baralho.getCartas()[i].getNumero() < baralho.getCartas()[j].getNumero()) {
-                    aux = baralho.getCartas()[i];
-                    baralho.getCartas()[i] = baralho.getCartas()[j];
-                    baralho.getCartas()[j] = aux;
+                if (this.getCartas()[i].getNumero() < this.getCartas()[j].getNumero()) {
+                    aux = this.getCartas()[i];
+                    this.getCartas()[i] = this.getCartas()[j];
+                    this.getCartas()[j] = aux;
                 }
             }
         }
     }
 
-    public void embaralhar(Baralho baralho) {
+    public void embaralhar() {
         Carta aux;
         Random embaralhamento = new Random();
         
@@ -84,9 +65,9 @@ public class Baralho {
         for (int i = 0; i < QUANTIDADE_DE_CARTAS; i++){
             int embaralha = embaralhamento.nextInt(QUANTIDADE_DE_CARTAS);
             
-            aux = baralho.getCartas()[i];
-            baralho.getCartas()[i] = baralho.getCartas()[embaralha];
-            baralho.getCartas()[embaralha] = aux;
+            aux = this.getCartas()[i];
+            this.getCartas()[i] = this.getCartas()[embaralha];
+            this.getCartas()[embaralha] = aux;
         }
     }
     
@@ -148,6 +129,8 @@ public class Baralho {
         int qntPaus12 = 0;
         int qntPaus13 = 0;
         
+        int flag = 0;
+        
         while (numero < QUANTIDADE_DE_CARTAS - 1) {
             switch (cartas[numero].getNaipe().toUpperCase()) {
                 case "ESPADAS":
@@ -155,91 +138,91 @@ public class Baralho {
                         case 1:
                             qntEsp1 += 1;
                             if (qntEsp1 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 2:
                             qntEsp2 += 1;
                             if (qntEsp2 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 3:
                             qntEsp3 += 1;
                             if (qntEsp3 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 4:
                             qntEsp4 += 1;
                             if (qntEsp4 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 5:
                             qntEsp5 += 1;
                             if (qntEsp5 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 6:
                             qntEsp6 += 1;
                             if (qntEsp6 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 7:
                             qntEsp7 += 1;
                             if (qntEsp7 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 8:
                             qntEsp8 += 1;
                             if (qntEsp8 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 9:
                             qntEsp9 += 1;
                             if (qntEsp9 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 10:
                             qntEsp10 += 1;
                             if (qntEsp10 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 11:
                             qntEsp11 += 1;
                             if (qntEsp11 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 12:
                             qntEsp12 += 1;
                             if (qntEsp12 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         default:
                             qntEsp13 += 1;
                             if (qntEsp13 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
@@ -249,91 +232,91 @@ public class Baralho {
                         case 1:
                             qntCop1 += 1;
                             if (qntCop1 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 2:
                             qntCop2 += 1;
                             if (qntCop2 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 3:
                             qntCop3 += 1;
                             if (qntCop3 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 4:
                             qntCop4 += 1;
                             if (qntCop4 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 5:
                             qntCop5 += 1;
                             if (qntCop5 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 6:
                             qntCop6 += 1;
                             if (qntCop6 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 7:
                             qntCop7 += 1;
                             if (qntCop7 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 8:
                             qntCop8 += 1;
                             if (qntCop8 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 9:
                             qntCop9 += 1;
                             if (qntCop9 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 10:
                             qntCop10 += 1;
                             if (qntCop10 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 11:
                             qntCop11 += 1;
                             if (qntCop11 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 12:
                             qntCop12 += 1;
                             if (qntCop12 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         default:
                             qntCop13 += 1;
                             if (qntCop13 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
@@ -343,91 +326,91 @@ public class Baralho {
                         case 1:
                             qntOuro1 += 1;
                             if (qntOuro1 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 2:
                             qntOuro2 += 1;
                             if (qntOuro2 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 3:
                             qntOuro3 += 1;
                             if (qntOuro3 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 4:
                             qntOuro4 += 1;
                             if (qntOuro4 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 5:
                             qntOuro5 += 1;
                             if (qntOuro5 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 6:
                             qntOuro6 += 1;
                             if (qntOuro6 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 7:
                             qntOuro7 += 1;
                             if (qntOuro7 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 8:
                             qntOuro8 += 1;
                             if (qntOuro8 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 9:
                             qntOuro9 += 1;
                             if (qntOuro9 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 10:
                             qntOuro10 += 1;
                             if (qntOuro10 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 11:
                             qntOuro11 += 1;
                             if (qntOuro11 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 12:
                             qntOuro12 += 1;
                             if (qntOuro12 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         default:
                             qntOuro13 += 1;
                             if (qntOuro13 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
@@ -437,91 +420,91 @@ public class Baralho {
                         case 1:
                             qntPaus1 += 1;
                             if (qntPaus1 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 2:
                             qntPaus2 += 1;
                             if (qntPaus2 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 3:
                             qntPaus3 += 1;
                             if (qntPaus3 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 4:
                             qntPaus4 += 1;
                             if (qntPaus4 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 5:
                             qntPaus5 += 1;
                             if (qntPaus5 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 6:
                             qntPaus6 += 1;
                             if (qntPaus6 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 7:
                             qntPaus7 += 1;
                             if (qntPaus7 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 8:
                             qntPaus8 += 1;
                             if (qntPaus8 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 9:
                             qntPaus9 += 1;
                             if (qntPaus9 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 10:
                             qntPaus10 += 1;
                             if (qntPaus10 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 11:
                             qntPaus11 += 1;
                             if (qntPaus11 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         case 12:
                             qntPaus12 += 1;
                             if (qntPaus12 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
                         default:
                             qntPaus13 += 1;
                             if (qntPaus13 > 1) {
-                                cartas = null;
+                                flag = 1;
                                 break;
                             }
                             break;
@@ -531,5 +514,18 @@ public class Baralho {
             }
             numero++;
         }
+        if (flag == 1) {
+            throw new NullPointerException("Erro: Você tentou intanciar uma carta ou várias cartas"
+                                                      + " repetidas");
+        }
+    }
+    
+    @Override
+    public String toString() {
+        String mostraCartas = "";
+        for (int i = 0; i < QUANTIDADE_DE_CARTAS; i++) {
+            mostraCartas += this.getCartas()[i].toString() + '\n';
+        }  
+        return mostraCartas;
     }
 }
