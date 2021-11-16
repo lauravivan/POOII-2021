@@ -30,7 +30,7 @@ public class DBController {
     }
     
     public void conectar() throws Exception {
-        String url = "jdbc:mysql://localhost/";
+        String url = "jdbc:mysql://localhost:8080/";
         
         url += DB_NAME + "?";
         url += "user=" + DB_USER + "&";
