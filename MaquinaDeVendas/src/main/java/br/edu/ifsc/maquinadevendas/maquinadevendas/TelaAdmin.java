@@ -35,7 +35,7 @@ public class TelaAdmin extends javax.swing.JFrame {
         btnRelatorioVendaSumarizada = new javax.swing.JButton();
         btnRelatorioVendaIndividual = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Admin");
         setResizable(false);
 
@@ -47,9 +47,19 @@ public class TelaAdmin extends javax.swing.JFrame {
 
         btnCadastraProduto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCadastraProduto.setText("Produto");
+        btnCadastraProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastraProdutoActionPerformed(evt);
+            }
+        });
 
         btnCadastraFormaPgto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCadastraFormaPgto.setText("Forma de pagamento");
+        btnCadastraFormaPgto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastraFormaPgtoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -137,6 +147,20 @@ public class TelaAdmin extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCadastraProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastraProdutoActionPerformed
+        TelaCadastroProduto telaCadProduto = new TelaCadastroProduto();
+        telaCadProduto.setVisible(true);
+        telaCadProduto.apertaBotaoAdicionar();
+        this.dispose();
+    }//GEN-LAST:event_btnCadastraProdutoActionPerformed
+
+    private void btnCadastraFormaPgtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastraFormaPgtoActionPerformed
+        TelaCadastroFormaPgto telaCadFormaPgto = new TelaCadastroFormaPgto();
+        telaCadFormaPgto.setVisible(true);
+        telaCadFormaPgto.apertaBotaoAdicionar();
+        this.dispose();
+    }//GEN-LAST:event_btnCadastraFormaPgtoActionPerformed
 
     /**
      * @param args the command line arguments
