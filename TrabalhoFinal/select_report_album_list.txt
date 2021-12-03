@@ -1,2 +1,0 @@
-SELECT nm_album AS album_name
-FROM Album
