@@ -1,0 +1,9 @@
+SELECT
+nm_album AS album_name,
+nm_artista AS artist_name,
+ano_lancamento AS debut_year,
+nr_faixas AS songs_number,
+min_duracao AS duration_minutes, 
+seg_duracao AS duration_seconds,
+capa AS album_cover
+FROM Album
